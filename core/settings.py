@@ -54,14 +54,6 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken"
 
 ]
-# CORS_EXPOSE_HEADERS = [
-#     "access-control-allow-headers",
-#     "authorization",
-#     "Authorization",
-#     "X-CSRFToken",
-#     "x-csrftoken"
-# ]
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -117,14 +109,11 @@ AUTH_USER_MODEL = "accountModule.User"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'authentication',
-        'USER': 'postgres',
-        'PASSWORD': 'Matin.M&Somayeh.D81=Love',
-        'HOST': 'localhost',
-        'PORT': '5434',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -218,7 +207,6 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication', # TODO: For now
         'accountModule.authenticate.CustomAuthentication',
     ],
 
@@ -234,9 +222,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mateen5671@gmail.com'
 EMAIL_HOST_PASSWORD = 'kpusopijeysnbvqt'
 EMAIL_PORT = 587
-
-# CSRF_COOKIE_NAME = 'XSRF-TOKEN'
-# CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
 
 PASSWORD_RESET_TIMEOUT = 14400
 
