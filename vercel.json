@@ -21,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "<your_project_name_inside_which_wsgi_file_exist>/wsgi.py"
+      "dest": "core/wsgi.py"
     }
   ]
 }
