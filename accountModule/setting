@@ -1,0 +1,13 @@
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mateen5671@gmail.com'
+EMAIL_HOST_PASSWORD = 'kpusopijeysnbvqt'
+EMAIL_PORT = 587
+
+CSRF_COOKIE_NAME = 'XSRF-TOKEN'
+CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
+
+PASSWORD_RESET_TIMEOUT = 14400
+
+AUTHENTICATION_BACKENDS = ['accountModule.backends.EmailOrUsernameModelBackend']
+AUTH_USER_MODEL = "accountModule.User"
