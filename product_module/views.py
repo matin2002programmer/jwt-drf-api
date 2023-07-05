@@ -12,24 +12,21 @@ from product_module.serializers import ProductSerializer, ProductImageSerializer
     FavoriteSerializer
 
 
-@permission_classes([permissions.IsAuthenticated])
+# @permission_classes([permissions.IsAuthenticated])
 @api_view(["GET", "POST", "DELETE", "PUT"])
 def product_view(request):
     products_module = Product.objects.all()
     serializer = ProductSerializer(products_module, many=True)
 
-    # Get the client's IP address from the X-Forwarded-For header
-    client_ip = request.META.get('HTTP_X_FORWARDED_FOR')
-
-    # If multiple IP addresses are present in the header, take the first one
-    if client_ip:
-        client_ip = client_ip.split(',')[0].strip()
+    # Get the client's IP address from the request's META dictionary
+    client_ip = request.META.get('REMOTE_ADDR')
 
     # Add the IP address to the serialized data
     serialized_data = serializer.data
-    serialized_data['client_ip'] = client_ip
+    serialized_data = {'data': serialized_data, 'client_ip': client_ip}
 
     return Response(serialized_data, status=status.HTTP_200_OK)
+
 
 
 class OrderView(APIView):
