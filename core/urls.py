@@ -7,7 +7,6 @@ from django.conf import settings
 from django.shortcuts import redirect
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/', permanent=True)),
     path('/', lambda request: redirect('https://www.instagram.com/matindevilish_boy/')),
     path('admin/', admin.site.urls),
     path('api/auth/', include("accountModule.urls", namespace='accountModule')),
