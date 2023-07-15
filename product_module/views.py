@@ -17,16 +17,17 @@ from product_module.serializers import ProductSerializer, ProductImageSerializer
 def product_view(request):
     products_module = Product.objects.all()
     serializer = ProductSerializer(products_module, many=True)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
     # Get the client's IP address from the request's META dictionary
-    client_ip = request.META.get('REMOTE_ADDR')
+    #client_ip = request.META.get('REMOTE_ADDR')
 
     # Add the IP address to the serialized data
-    serialized_data = serializer.data
-    serialized_data = {'data': serialized_data, 'client_ip': client_ip}
+    #serialized_data = serializer.data
+    #serialized_data = {'data': serialized_data, 'client_ip': client_ip}
 
-    return Response(serialized_data, status=status.HTTP_200_OK)
-
+    
 
 
 class OrderView(APIView):
